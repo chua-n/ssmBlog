@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.chuan.ssm.blog.mapper.TagMapper">
+
+    <resultMap id="tagResultMap" type="tag">
+        <id column="tag_id" property="tagId" jdbcType="INTEGER"/>
+        <result column="tag_name" property="tagName" jdbcType="VARCHAR"/>
+        <result column="tag_description" property="tagDescription" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="baseColumnList">
+        tag_id
+        , tag_name, tag_description
+    </sql>
+
+    <sql id="table">tag</sql>
+
+    <select id="getTagById" resultMap="tagResultMap" parameterType="java.lang.Integer">
+        SELECT
+        <include refid="baseColumnList"/>
+        FROM
+        <include refid="table"/>
+        WHERE tag_id = #{tagId,jdbcType=INTEGER}
+    </select>
+
+    <delete id="deleteById" parameterType="java.lang.Integer">
+        DELETE FROM
+        <include refid="table"/>
+        WHERE tag_id = #{tagId,jdbcType=INTEGER}
+    </delete>
+
+    <insert id="insert" parameterType="tag" useGeneratedKeys="true" keyProperty="tagId">
+        INSERT INTO
+        <include refid="table"/>
+        (tag_name, tag_description)
+        VALUES (#{tagName,jdbcType=VARCHAR}, #{tagDescription,jdbcType=VARCHAR})
+    </insert>
+
+
+    <update id="update" parameterType="tag">
+        UPDATE
+        <include refid="table"/>
+        <set>
+            <if test="tagName != null">
+                tag_name = #{tagName,jdbcType=VARCHAR},
+            </if>
+            <if test="tagDescription != null">
+                tag_description = #{tagDescription,jdbcType=VARCHAR}
+            </if>
+        </set>
+        WHERE tag_id = #{tagId,jdbcType=INTEGER}
+    </update>
+
+    <!--获得标签列表-->
+    <select id="listTag" resultType="tag">
+        SELECT
+        <include refid="baseColumnList"/>
+        FROM
+        <include refid="table"/>
+    </select>
+
+    <!--获得标签总数-->
+    <select id="countTag" resultType="Integer">
+        SELECT COUNT(*) FROM
+        <include refid="table"/>
+    </select>
+
+    <!--根据标签名获取标签-->
+    <select id="getTagByName" parameterType="String" resultType="tag">
+        SELECT
+        <include refid="baseColumnList"/>
+        FROM
+        <include refid="table"/>
+        WHERE tag_name=#{value}
+        LIMIT 1
+    </select>
+</mapper>

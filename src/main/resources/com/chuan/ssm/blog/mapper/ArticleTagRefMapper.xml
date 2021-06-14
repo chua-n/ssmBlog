@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chuan.ssm.blog.mapper.ArticleTagRefMapper">
+    <sql id="table">article_tag_ref</sql>
+
+    <!--parameterType应该是com.chuan.ssm.blog.entity.ArticleTagRef还是java.lang.Integer???-->
+    <insert id="insert" parameterType="java.lang.Integer">
+        INSERT INTO
+        <include refid="table"/>
+        (article_id, tag_id)
+        VALUES (#{articleId}, #{tagId})
+    </insert>
+
+    <delete id="deleteByTagId" parameterType="int">
+        DELETE FROM
+        <include refid="table"/>
+        WHERE tag_id = #{tagId}
+    </delete>
+
+    <delete id="deleteByArticleId" parameterType="int">
+        DELETE FROM
+        <include refid="table"/>
+        WHERE article_id = #{articleId}
+    </delete>
+
+    <select id="countArticleByTagId" parameterType="int" resultType="int">
+        SELECT COUNT(*) FROM
+        <include refid="table"/>
+        WHERE tag_id = #{tagId}
+    </select>
+
+    <select id="listTagByArticleId" parameterType="int" resultType="com.chuan.ssm.blog.entity.Tag">
+        SELECT tag.*
+        FROM tag,
+             article_tag_ref
+        WHERE article_tag_ref.article_id = #{articleId}
+          AND article_tag_ref.tag_id = tag.tag_id
+    </select>
+</mapper>

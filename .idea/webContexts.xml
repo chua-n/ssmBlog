@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebContextManager">
+    <option name="state">
+      <map>
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/view/admin/comment/edit.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/view/admin/comment" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/view/admin/login.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/view/admin" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/view/admin/register.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/view/admin" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/view/home/index.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/view/home" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/view/home/page/applyLink.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/view/home/page" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/view/home/page/articleDetail.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/view/home/page" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/view/home/page/articleListByCategory.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/view/home/page" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/view/home/public/part/header.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/view/home/public/part" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/view/home/public/part/sidebar-2.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/view/home/public/part" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/view/home/public/part/sidebar-3.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/view/home/public/part" />
+      </map>
+    </option>
+  </component>
+</project>

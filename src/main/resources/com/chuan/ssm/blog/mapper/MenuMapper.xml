@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.chuan.ssm.blog.mapper.MenuMapper">
+
+    <resultMap id="menuResultMap" type="menu">
+        <id column="menu_id" property="menuId" jdbcType="INTEGER"/>
+        <result column="menu_name" property="menuName" jdbcType="VARCHAR"/>
+        <result column="menu_url" property="menuUrl" jdbcType="VARCHAR"/>
+        <result column="menu_level" property="menuLevel" jdbcType="INTEGER"/>
+        <result column="menu_icon" property="menuIcon" jdbcType="VARCHAR"/>
+        <result column="menu_order" property="menuOrder" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <sql id="baseColumnList">
+        menu_id
+        , menu_name, menu_url, menu_level, menu_icon, menu_order
+    </sql>
+
+    <sql id="table">menu</sql>
+
+    <select id="getMenuById" resultMap="menuResultMap" parameterType="java.lang.Integer">
+        SELECT
+        <include refid="baseColumnList"/>
+        FROM
+        <include refid="table"/>
+        WHERE menu_id = #{menuId,jdbcType=INTEGER}
+    </select>
+
+    <delete id="deleteById" parameterType="java.lang.Integer">
+        DELETE FROM
+        <include refid="table"/>
+        WHERE menu_id = #{menuId,jdbcType=INTEGER}
+    </delete>
+
+    <insert id="insert" parameterType="menu" useGeneratedKeys="true"
+            keyProperty="menuId">
+        INSERT INTO
+        <include refid="table"/>
+        (menu_id, menu_name, menu_url,
+        menu_level, menu_icon, menu_order)
+        VALUES (
+        #{menuId,jdbcType=INTEGER},
+        #{menuName,jdbcType=VARCHAR},
+        #{menuUrl,jdbcType=VARCHAR},
+        #{menuLevel,jdbcType=INTEGER},
+        #{menuIcon,jdbcType=VARCHAR},
+        #{menuOrder,jdbcType=INTEGER}
+        )
+    </insert>
+
+    <update id="update" parameterType="menu">
+        UPDATE
+        <include refid="table"/>
+        <set>
+            <if test="menuName != null">menu_name = #{menuName,jdbcType=VARCHAR},</if>
+            <if test="menuUrl != null">menu_url = #{menuUrl,jdbcType=VARCHAR},</if>
+            <if test="menuLevel != null">menu_level = #{menuLevel,jdbcType=INTEGER},</if>
+            <if test="menuIcon != null">menu_icon = #{menuIcon,jdbcType=VARCHAR},</if>
+            <if test="menuOrder != null">menu_order = #{menuOrder,jdbcType=INTEGER},</if>
+        </set>
+        WHERE menu_id = #{menuId,jdbcType=INTEGER}
+    </update>
+
+    <!--获得菜单列表-->
+    <select id="listMenu" resultType="menu">
+        SELECT
+        <include refid="baseColumnList"/>
+        FROM
+        <include refid="table"/>
+        ORDER BY menu_order DESC, menu_id ASC
+    </select>
+
+</mapper>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <settings>
+        <!--允许JDBC支持自动生成主键-->
+        <setting name="useGeneratedKeys" value="false"/>
+        <!--开启自动驼峰命名规则的映射：即从经典数据库列名 A_COLUMN 到经典Java属性名 aColumn 的类似映射-->
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+
+        <!--打印查询语句-->
+        <!--<setting name="logImpl" value="STDOUT_LOGGING"/>-->
+    </settings>
+
+    <typeAliases>
+        <typeAlias type="com.chuan.ssm.blog.entity.Category" alias="category"/>
+        <typeAlias type="com.chuan.ssm.blog.entity.Comment" alias="comment"/>
+        <typeAlias type="com.chuan.ssm.blog.entity.Link" alias="link"/>
+        <typeAlias type="com.chuan.ssm.blog.entity.Menu" alias="menu"/>
+        <typeAlias type="com.chuan.ssm.blog.entity.Notice" alias="notice"/>
+        <typeAlias type="com.chuan.ssm.blog.entity.Options" alias="options"/>
+        <typeAlias type="com.chuan.ssm.blog.entity.Page" alias="page"/>
+        <typeAlias type="com.chuan.ssm.blog.entity.Tag" alias="tag"/>
+        <typeAlias type="com.chuan.ssm.blog.entity.User" alias="user"/>
+    </typeAliases>
+
+    <plugins>
+        <!--com.github.pagehelper插件：不知道干啥的-->
+        <plugin interceptor="com.github.pagehelper.PageHelper">
+            <property name="offsetAsPageNum" value="false"/>
+            <property name="rowBoundsWithCount" value="false"/>
+            <property name="pageSizeZero" value="true"/>
+            <property name="reasonable" value="true"/>
+            <property name="supportMethodsArguments" value="false"/>
+            <property name="returnPageInfo" value="none"/>
+        </plugin>
+    </plugins>
+</configuration>
