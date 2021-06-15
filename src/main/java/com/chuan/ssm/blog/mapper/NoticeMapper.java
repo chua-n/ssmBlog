@@ -13,7 +13,7 @@ public interface NoticeMapper {
 
     int insert(Notice notice);
 
-    Notice getNoticeById(int noticeId);
+    Notice getNoticeById(Integer noticeId);
 
     int update(Notice notice);
 
